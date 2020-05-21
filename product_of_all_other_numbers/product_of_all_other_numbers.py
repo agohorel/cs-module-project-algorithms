@@ -3,20 +3,20 @@ Input: a List of integers
 Returns: a List of integers
 '''
 
+
 def product_of_all_other_numbers(arr):
     result = [1 for i in arr]
     for i in range(len(arr)):
         for j in range(len(arr)):
-            if arr[j] != 0:
+            if arr[j] > 0:
                 result[i] *= arr[j]
-   
+
         if arr[i] > 0:
-            result[i] *= 1/arr[i]
+            result[i] *= pow(arr[i], -1)
 
     for i in range(len(result)):
         result[i] = int(result[i])
 
-    print(result)
     return result
 
 
@@ -29,18 +29,3 @@ if __name__ == '__main__':
 
     print(
         f"Output of product_of_all_other_numbers: {product_of_all_other_numbers(arr)}")
-
-# input
-[1, 2, 3]
-
-# desired output
-[6, 3, 2]
-
-# if you multiplied every item by every other item
-[6, 6, 6]
-
-# if you divide each item by it's original value:
-[6, 3, 2]
-
-# we can divide w/ multiplication via reciprocals ( n * (1/x))
-# but that still uses division... clarify
